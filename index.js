@@ -20,7 +20,7 @@ import crypto from "crypto";
 
 // ================== 【手动设置 UUID】==================
 // 请将下方双引号内的值替换为您的 UUID
-const UUID = "097c9441-19e0-4839-91b2-bb6facfa6470";  // 修改这里！
+const UUID = "fdeeda45-0a8e-4570-bcc6-d68c995f5830";  // 修改这里！
 
 // 格式校验（防止错误）
 if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(UUID)) {
@@ -56,10 +56,10 @@ function scheduleBeijingTimeMidnight(callback) {
 // ================== 基本配置 ==================
 const MASQ_DOMAINS = ["www.bing.com"];
 const SERVER_TOML = "server.toml";
-const CERT_PEM = "t-cert.pem";
-const KEY_PEM = "t-key.pem";
-const LINK_TXT = "t_link.txt";
-const TUIC_BIN = "./t-server";
+const CERT_PEM = "tuic-cert.pem";
+const KEY_PEM = "tuic-key.pem";
+const LINK_TXT = "tuic_link.txt";
+const TUIC_BIN = "./tuic-server";
 
 // ================== 工具函数 ==================
 const randomSNI = () => MASQ_DOMAINS[Math.floor(Math.random() * MASQ_DOMAINS.length)];
@@ -203,7 +203,7 @@ function runLoop() {
     const proc = spawn(TUIC_BIN, ["-c", SERVER_TOML], { stdio: "ignore" });
     proc.on("exit", (code) => {
       console.log(`TUIC exited (${code}), restarting in 5s...`);
-      setTimeout(loop, 5000);
+      setTimeout(loop, 30000);
     });
   };
   loop();
