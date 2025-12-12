@@ -60,7 +60,6 @@ const CERT_PEM = "t-cert.pem";
 const KEY_PEM = "t-key.pem";
 const LINK_TXT = "t_link.txt";
 const TUIC_BIN = "./t-server";
-const port = 3001
 
 // ================== 工具函数 ==================
 const randomSNI = () => MASQ_DOMAINS[Math.floor(Math.random() * MASQ_DOMAINS.length)];
@@ -220,7 +219,7 @@ async function main() {
   });
 
   // 2. 部署逻辑
-  const port = readPort();
+  const port = 3001;
   const domain = randomSNI();
   const password = randomHex(16);
 
