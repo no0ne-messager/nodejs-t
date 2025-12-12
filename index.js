@@ -56,13 +56,13 @@ function scheduleBeijingTimeMidnight(callback) {
 // ================== 基本配置 ==================
 const MASQ_DOMAINS = ["www.bing.com"];
 const SERVER_TOML = "server.toml";
-const CERT_PEM = "tuic-cert.pem";
-const KEY_PEM = "tuic-key.pem";
-const LINK_TXT = "tuic_link.txt";
-const TUIC_BIN = "./tuic-server";
+const CERT_PEM = "t-cert.pem";
+const KEY_PEM = "t-key.pem";
+const LINK_TXT = "t_link.txt";
+const TUIC_BIN = "./t-server";
+const port = 3001
 
 // ================== 工具函数 ==================
-const randomPort = () => Math.floor(Math.random() * 40000) + 20000;
 const randomSNI = () => MASQ_DOMAINS[Math.floor(Math.random() * MASQ_DOMAINS.length)];
 const randomHex = (len = 16) => crypto.randomBytes(len).toString("hex");
 function fileExists(p) { return fs.existsSync(p); }
@@ -118,17 +118,6 @@ async function downloadFile(url, dest, redirectCount = 0) {
       file.on("finish", () => file.close(resolve));
     }).on("error", reject);
   });
-}
-
-// ================== 读取端口（仅随机或环境变量）=================
-function readPort() {
-  if (process.env.SERVER_PORT && !isNaN(process.env.SERVER_PORT)) {
-    console.log(`Using env port: ${process.env.SERVER_PORT}`);
-    return Number(process.env.SERVER_PORT);
-  }
-  const port = randomPort();
-  console.log(`Random port: ${port}`);
-  return port;
 }
 
 // ================== 生成证书 ==================
