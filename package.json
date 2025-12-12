@@ -1,21 +1,16 @@
 {
-  "name": "nodejs-t",
-  "version": "1,0,0",
-  "description": "Thsi is a node project",
-  "main": "index.js",
-  "author": "eooce",
-  "repository": "",
-  "license": "MIT",
-  "private": false,
+  "name": "tuic-node",
+  "version": "1.0.0",
+  "description": "TUIC v5 over QUIC 自动部署脚本（Node.js 版，无需 root）",
+  "main": "node.js",
+  "type": "module",
   "scripts": {
-    "dev": "node index.js",
-    "start": "node index.js"
+    "start": "node node.js"
   },
-  "dependencies": {
-    "axios": "latest",
-    "express": "^4.18.2"
-  },
+  "keywords": ["tuic", "quic", "vpn", "deploy", "nodejs", "no-root"],
+  "author": "eishare",
+  "license": "MIT",
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   }
 }
