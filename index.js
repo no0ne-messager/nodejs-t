@@ -189,7 +189,7 @@ function runLoop() {
 
 // ================== 主流程 ==================
 async function main() {
-  console.log("TUIC v5 over QUIC 自动部署开始");
+  console.log("自动部署开始");
 
   // 1. 启动定时重启
   scheduleBeijingTimeMidnight(() => {
