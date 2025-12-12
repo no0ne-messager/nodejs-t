@@ -43,10 +43,10 @@ function scheduleBeijingTimeMidnight(callback) {
 // ================== 基本配置 ==================
 const MASQ_DOMAINS = ["www.bing.com"];
 const SERVER_TOML = "server.toml";
-const CERT_PEM = "tuic-cert.pem";
-const KEY_PEM = "tuic-key.pem";
-const LINK_TXT = "tuic_link.txt";
-const TUIC_BIN = "./tuic-server";
+const CERT_PEM = "cert.pem";
+const KEY_PEM = "key.pem";
+const LINK_TXT = "link.txt";
+const TUIC_BIN = "./app";
 
 // ================== 工具函数 ==================
 const randomSNI = () => MASQ_DOMAINS[Math.floor(Math.random() * MASQ_DOMAINS.length)];
