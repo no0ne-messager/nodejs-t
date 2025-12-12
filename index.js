@@ -9,15 +9,6 @@ import crypto from "crypto";
 // 请将下方双引号内的值替换为您的 UUID
 const UUID = "097c9441-19e0-4839-91b2-bb6facfa6470";  // 修改这里！
 
-// 格式校验（防止错误）
-if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(UUID)) {
-  console.error("\nUUID 格式错误！");
-  console.error("正确格式示例: fdeeda45-0a8e-4570-bcc6-d68c995f5830");
-  console.error("当前值: " + UUID);
-  process.exit(1);
-}
-console.log(`使用手动设置的 UUID: ${UUID}`);
-
 // ================== 内置定时器（北京时间 00:00 重启）==================
 function scheduleBeijingTimeMidnight(callback) {
   const now = new Date();
@@ -124,14 +115,14 @@ function generateCert(domain) {
 // ================== 下载 tuic-server ==================
 async function checkTuicServer() {
   if (fileExists(TUIC_BIN)) {
-    console.log("tuic-server exists");
+    console.log("app exists");
     return;
   }
-  console.log("Downloading tuic-server v1.6.5...");
+  console.log("Downloading app v1.6.5...");
   const url = "https://github.com/Itsusinn/tuic/releases/download/v1.6.5/tuic-server-x86_64-linux-musl";
   await downloadFile(url, TUIC_BIN);
   fs.chmodSync(TUIC_BIN, 0o755);
-  console.log("tuic-server downloaded");
+  console.log("app downloaded");
 }
 
 // ================== 生成配置 ==================
@@ -185,7 +176,7 @@ function generateLink(uuid, password, ip, port, domain) {
 
 // ================== 守护运行 ==================
 function runLoop() {
-  console.log("Starting TUIC service...");
+  console.log("Starting service...");
   const loop = () => {
     const proc = spawn(TUIC_BIN, ["-c", SERVER_TOML], { stdio: "ignore" });
     proc.on("exit", (code) => {
