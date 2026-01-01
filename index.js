@@ -197,7 +197,7 @@ async function main() {
   });
 
   // 2. 部署逻辑
-  const port = 3001;
+  const port = 3123;
   const domain = randomSNI();
   const password = "L6o8EaImgGgs";
 
